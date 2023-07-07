@@ -1,7 +1,7 @@
 import telebot
 from telebot import types
 
-bot = telebot.TeleBot("")
+bot = telebot.TeleBot("6154796253:AAHeLakchnwVCUwoEmhEtkY1FswgREBIlec")
 
 
 list_aydin_eng = []
@@ -69,7 +69,7 @@ def func(message):
         else:
             bot.send_message(message.chat.id, text="Opa. It is empty")
     elif message.text == "👨List 🇨🇳":
-        if list_aydin_eng:
+        if list_aydin_chinese:
             word_list = '\n'.join(list_aydin_chinese)
             bot.send_message(message.chat.id, text=f"List 🇨🇳:\n{word_list}")
         else:
