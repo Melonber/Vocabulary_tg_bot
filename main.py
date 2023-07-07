@@ -1,7 +1,7 @@
 import telebot
 from telebot import types
 
-bot = telebot.TeleBot("6154796253:AAHeLakchnwVCUwoEmhEtkY1FswgREBIlec")
+bot = telebot.TeleBot("")
 
 
 list_aydin_eng = []
