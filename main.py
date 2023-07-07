@@ -8,6 +8,7 @@ list_aydin_eng = []
 list_aydin_chinese = []
 list_xinlan_rus = []
 list_xinlan_eng = []
+list_xinlan_tur = []
 list_both = []
 
 @bot.message_handler(commands=['start'])
@@ -24,6 +25,11 @@ def start(message):
 def add_word_to_list(message):
     word = message.text
     list_aydin_eng.append(word)
+    bot.send_message(message.chat.id, text=f"Word '{word}' added to list !")
+
+def add_word_to_list_turk(message):
+    word = message.text
+    list_xinlan_tur.append(word)
     bot.send_message(message.chat.id, text=f"Word '{word}' added to list !")
 
 def add_word_to_list_both(message):
@@ -88,8 +94,10 @@ def func(message):
         btn2 = types.KeyboardButton("👸List 🇬🇧")
         btn3 = types.KeyboardButton("👸Add 🇷🇺")
         btn4 = types.KeyboardButton("👸List 🇷🇺")
-        btn5 = types.KeyboardButton("⬅️Back ⬅️")
-        markup.add(btn1, btn2,btn3,btn4,btn5)
+        btn5 = types.KeyboardButton("👸Add 🇹🇷")
+        btn6 = types.KeyboardButton("👸List 🇹🇷")
+        btn7 = types.KeyboardButton("⬅️Back ⬅️")
+        markup.add(btn1, btn2,btn3,btn4,btn5,btn6,btn7)
         bot.send_message(message.chat.id, text="Lütfen choose комнду", reply_markup=markup)
     elif (message.text == "👸Add 🇬🇧"):
         bot.send_message(message.chat.id, text="Enter the word: ")
@@ -97,6 +105,9 @@ def func(message):
     elif (message.text == "👸Add 🇷🇺"):
         bot.send_message(message.chat.id, text="Enter the word: ")
         bot.register_next_step_handler(message, add_word_to_list_rus_xin)
+    elif (message.text == "👸Add 🇹🇷"):
+        bot.send_message(message.chat.id, text="Enter the word: ")
+        bot.register_next_step_handler(message, add_word_to_list_turk)
     elif message.text == "👸List 🇬🇧":
         if list_xinlan_eng:
             word_list = '\n'.join(list_xinlan_eng)
@@ -107,6 +118,12 @@ def func(message):
         if list_xinlan_rus:
             word_list = '\n'.join(list_xinlan_rus)
             bot.send_message(message.chat.id, text=f"List 🇷🇺:\n{word_list}")
+        else:
+            bot.send_message(message.chat.id, text="Opa. It is empty")
+    elif message.text == "👸List 🇹🇷":
+        if list_xinlan_tur:
+            word_list = '\n'.join(list_xinlan_tur)
+            bot.send_message(message.chat.id, text=f"List 🇹🇷:\n{word_list}")
         else:
             bot.send_message(message.chat.id, text="Opa. It is empty")
     elif message.text == "👸👨艾岚":
