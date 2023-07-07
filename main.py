@@ -116,6 +116,9 @@ def func(message):
         btn5 = types.KeyboardButton("⬅️Back ⬅️")
         markup.add(btn1, btn2, btn5)
         bot.send_message(message.chat.id, text="Lütfen choose комнду", reply_markup=markup)
+    elif (message.text == "👸👨Add 🇬🇧🇷🇺🇨🇳🇹🇷"):
+        bot.send_message(message.chat.id, text="Enter the word: ")
+        bot.register_next_step_handler(message, add_word_to_list_both)
     elif message.text == "👸👨List 🇬🇧🇷🇺🇨🇳🇹🇷":
         if list_both:
             word_list = '\n'.join(list_both)
